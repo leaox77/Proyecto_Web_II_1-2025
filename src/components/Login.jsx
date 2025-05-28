@@ -16,14 +16,14 @@ export default function Login({ onLogin }) {
             onLogin(user);
         }
         else {
-            alert('credenciales incorrectas');
+            alert('Credenciales Incorrectas');
         }
     };
 
     return (
         <form onSubmit={handleSubmit}>
-            <h2>Iniciar Sesion</h2>
-            <input type="text" placeholder='Nombre de Usuario' onChange={e => setForm({...form, username: e.target.value})} />
+            <h2>Iniciar Sesión</h2>
+            <input type="text" placeholder='Usuario' onChange={e => setForm({...form, username: e.target.value})} />
             <input type="password" placeholder='Contraseña' onChange={e => setForm({...form, password: e.target.value})}/>
             <button type="submit">Iniciar</button>
             <p>No tienes cuenta? <Link to='/register'>Registrate</Link></p>
