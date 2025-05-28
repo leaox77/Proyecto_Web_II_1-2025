@@ -1,0 +1,14 @@
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+form label{
+    width: 50%;
+    margin: auto;
+    color: #fff !important;
+    display: flex;
+    flex-direction: column;
+}

@@ -3,9 +3,9 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 import Login from './components/Login'
 import Register from './components/Register'
 import Dashboard from './components/Dashboard'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import video from "./Video/bg.mp4"
+
 
 function App() {
   const [user, setUser] = useState(null);
@@ -31,7 +31,10 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className='main'>
+          <video loop muted autoPlay>
+              <source  src={video} type='video/mp4'/>
+          </video>
         <Routes>
         <Route path='/' element={<Login onLogin={handleLogin}/>}/>
         <Route path='/register' element={<Register onLogin={handleLogin}/>}/>

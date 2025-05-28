@@ -1,0 +1,78 @@
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+form{
+    min-width: 25rem;
+    min-height: 15rem;
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    padding: 30px;
+    backdrop-filter: blur(3px);
+    gap: 25px;
+    border-radius: 4rem;
+    animation: parpadear alternate-reverse 1.5s infinite;
+}
+
+form h2{
+    color: #eee;
+    text-shadow:3px 0px 0px #111;
+}
+form input{
+    background-color: transparent;
+    border: none;
+    border-left: 2px solid #f51;
+    border-bottom:1px  solid transparent;
+    color: #fff;
+    border-radius: 8px;
+    outline: 1px #f51;
+    outline-offset: 1px ;
+    padding:7px 20px;
+    font-size: 15px;
+    transition: all .3s ease;
+}
+form input:focus{
+    border-left: none;
+    outline-offset: 3px black;
+        border-bottom: 1px solid #f52;
+}
+
+form button[type="submit"]{
+    color:  #f51 !important;
+    width: 50%;
+    border: 1px solid #444;
+    margin: auto;
+    background-color: transparent;
+    border-radius: 50px;
+    padding: 7px 1px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: all .4s ease;
+}
+form button[type="submit"]:hover{
+    color: white;
+    border:  1px solid transparent;
+    background-color: #fff;
+    box-shadow: 0 5px 12px #f51;
+    filter: drop-shadow(0 5px 3px #f51);
+}
+form p{
+    text-align: center;
+}
+form p>a{
+    text-decoration: none;
+    color: #f51;
+}
+
+/* Animations */
+@keyframes parpadear{
+    from{
+        box-shadow: 1px 1px 12px #eee;
+    }
+    to{
+        box-shadow: 1px 1px 12px #f51;
+    }
+}
