@@ -10,7 +10,7 @@ export default function Login({ onLogin }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+/*
         const user = mockUsers.find(u => u.username === form.username && u.password === form.password);
         if (user) {
             onLogin(user);
@@ -18,6 +18,20 @@ export default function Login({ onLogin }) {
         else {
             alert('credenciales incorrectas');
         }
+        */
+        const stored = localStorage.getItem("users");
+    const users = stored ? JSON.parse(stored) : [];
+
+    const user = users.find(
+      (u) => u.username === form.username && u.password === form.password
+    );
+
+    if (user) {
+      alert(`Bienvenido, ${user.name}`);
+      if (onLogin) onLogin(user); // si se usa autenticación global
+    } else {
+      alert("Credenciales incorrectas");
+    }
     };
 
     return (
