@@ -31,23 +31,36 @@ export default function Register({onLogin}) {
 
     const handleSubmit = (e) =>{
         e.preventDefault();
+        setError("");
 
-        const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
-        const userExists = storedUsers.some((user) => user.username === form.username);
-        
-        if(userExists){
-            setError("El usuario ya está registrado");
+        const { username , password, name ,email } = form;
+        if(!username || !password || !name || !email){
+            setError("Todos los campos son obligatorios");
             return;
         }
 
-    const newUsers = [...storedUsers, form];
-    localStorage.setItem("users", JSON.stringify(newUsers))
+        const emailValidar = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(!emailValidar.test(email)){
+            setError("El correo electrónico no es válido");
+            return;
+        }
 
-        if (onLogin)onLogin(form);
+        const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+        const userExists = storedUsers.some((user) => user.username.toLowerCase() === username.toLowerCase());
+
+        if(userExists){
+            setError("El nombre de usuario ya está registrado");
+            return;
+        }
+
+        const newUsers = [...storedUsers, form];
+        localStorage.setItem("users", JSON.stringify(newUsers));
+
+        if(onLogin) onLogin(form);
 }
     return (
         <div className={styles.container}>
-            <form style={{ bacgkround: colors.background }} onSubmit={handleSubmit} >
+            <form style={{ bacgkround: colors.background  }} onSubmit={handleSubmit} >
             <h2>Register</h2>
                     <label style={{color:colors.primary}}>Full Name<input value={form.name} name="name" type="text" style={{color:colors.inputs}} onChange={handleChange}/></label>
                     <label style={{color:colors.primary}}>Email<input value={form.email} name="email"  type="email" style={{color:colors.inputs}} onChange={handleChange}/></label>
